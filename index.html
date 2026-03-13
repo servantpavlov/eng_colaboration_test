@@ -77,8 +77,10 @@
 
   <script>
     const toggle = document.getElementById('darkModeToggle');
+    // bodyに"dark"クラスを付け外しすることで、CSS側のダークモードスタイルが適用される
     toggle.addEventListener('click', function () {
       document.body.classList.toggle('dark');
+      // ダークモード中は太陽アイコン、ライトモード中は月アイコンを表示
       toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
     });
   </script>
