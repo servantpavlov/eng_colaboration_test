@@ -19,6 +19,89 @@
     a {
       color: #0066cc;
     }
+
+    /* 一押しポイント: Claude Codeのブランドカラー(オレンジ)に合わせたテーマ */
+    /* #fb923c, #ea580c, #fdba74 などオレンジ系で統一し、Claude Code感を演出 */
+    .faq-section {
+      margin-top: 48px;
+      padding: 32px;
+      /* Claude Codeの温かみのあるオレンジグラデーション */
+      background: linear-gradient(135deg, #fff7ed, #ffedd5);
+      border-radius: 16px;
+      border: 2px solid #fb923c;
+    }
+
+    .faq-section h2 {
+      /* Claude Codeのメインオレンジ */
+      color: #ea580c;
+      margin-top: 0;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #fb923c;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #fdba74;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .faq-item:hover {
+      /* ホバー時もオレンジの影でClaude Code感を統一 */
+      box-shadow: 0 2px 12px rgba(251, 146, 60, 0.25);
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      /* 質問テキストもオレンジ系の濃い色で視認性を確保 */
+      color: #9a3412;
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: #fff7ed;
+    }
+
+    .faq-icon {
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+      /* アイコンもClaude Codeオレンジで揃える */
+      color: #ea580c;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(90deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 20px;
+      color: #444;
+      line-height: 1.7;
+      background: #fffbf5;
+      border-top: 0 solid #fdba74;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+      padding: 16px 20px;
+      border-top: 1px solid #fdba74;
+    }
   </style>
 </head>
 <body>
@@ -27,5 +110,54 @@
   <nav>
     <a href="index2.html">こちらです(ページ2へ)</a>
   </nav>
-  </bo dy>
+
+  <section class="faq-section">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>このリポジトリは何のためにありますか？</span>
+        <span class="faq-icon">▶</span>
+      </div>
+      <div class="faq-answer">
+        エンジニアチームのGitブランチ運用やPRレビューの練習用リポジトリです。実際のプロダクトコードではなく、安全に操作を試せる環境として用意しています。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>ブランチを間違えてしまった場合はどうすればいいですか？</span>
+        <span class="faq-icon">▶</span>
+      </div>
+      <div class="faq-answer">
+        練習用リポジトリなので、間違えても問題ありません。git checkout や git switch で正しいブランチに切り替えられます。不安な場合はチームメンバーに相談してください。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Claude Codeとは何ですか？</span>
+        <span class="faq-icon">▶</span>
+      </div>
+      <div class="faq-answer">
+        AnthropicのAIコーディングアシスタントです。ターミナル上で自然言語の指示を与えると、コードの実装・Git操作・PR作成などを自動で行ってくれます。
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /** FAQアコーディオンの開閉を切り替える */
+    function toggleFaq(questionEl) {
+      const item = questionEl.parentElement;
+      // 同じアイテムをクリックした場合はトグル、別のアイテムの場合は前のを閉じる
+      const allItems = document.querySelectorAll('.faq-item');
+      allItems.forEach(function(other) {
+        if (other !== item) {
+          other.classList.remove('open');
+        }
+      });
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
 </html>
