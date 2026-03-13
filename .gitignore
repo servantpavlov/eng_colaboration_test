@@ -1,0 +1,23 @@
+# confidential data
+kojin_jouhou
+.env
+
+# build, cache, log
+/dist/
+/.cache/
+node_modules/
+coverage/
+.eslintcache
+.tsbuildinfo
+
+# Firebase cache
+.firebase/
+
+# editor
+.idea/
+.vscode/
+
+# e2e test
+playwright/.auth/
+playwright-report/
+.playwright-mcp
