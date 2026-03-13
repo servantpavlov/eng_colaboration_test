@@ -10,14 +10,59 @@
       max-width: 600px;
       margin: 40px auto;
       padding: 0 20px;
+      background-color: #fff;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     h1 {
       color: #333;
+      transition: color 0.3s;
     }
 
     a {
       color: #0066cc;
+      transition: color 0.3s;
+    }
+
+    /* ダークモード */
+    body.dark {
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+    }
+
+    body.dark h1 {
+      color: #e0e0e0;
+    }
+
+    body.dark a {
+      color: #64b5f6;
+    }
+
+    /* トグルボタン */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: 2px solid #333;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: border-color 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    body.dark .dark-mode-toggle {
+      border-color: #e0e0e0;
     }
   </style>
 </head>
@@ -27,5 +72,17 @@
   <nav>
     <a href="index2.html">こちらです(ページ2へ)</a>
   </nav>
-  </bo dy>
+
+  <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
+
+  <script>
+    const toggle = document.getElementById('darkModeToggle');
+    // bodyに"dark"クラスを付け外しすることで、CSS側のダークモードスタイルが適用される
+    toggle.addEventListener('click', function () {
+      document.body.classList.toggle('dark');
+      // ダークモード中は太陽アイコン、ライトモード中は月アイコンを表示
+      toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
+  </script>
+</body>
 </html>
